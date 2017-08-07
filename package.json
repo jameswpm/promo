@@ -1,0 +1,15 @@
+{
+  "name": "promoteste",
+  "version": "1.0.0",
+  "description": "Teste para Promo de Bolso. API de descriptografia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "James Miranda <jameswpm@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "request": "^2.81.0"
+  }
+}
