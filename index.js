@@ -16,11 +16,39 @@ let decrypted = crypto.DES.decrypt (
     { mode: crypto.mode.ECB, padding: crypto.pad.ZeroPadding }
 ).toString();
 
+let intCode = parseInt(decrypted, 16).toString();
+
+let finalcode = intCode.length == 17 ? intCode : padding(intCode);
+
+let m = 2;
+let total = 0;
+for (j = finalcode.length - 2; j >= 0 ; j--) {
+  total += parseInt(finalcode[j]) * m;
+  if (m == 9) {
+    m = 2;
+  } else {
+    m++;
+  }
+}
+
+let mod = total % 11;
+let result = 11 - mod;
+let dv = result;
+if (result == 10 || result == 11) {
+  dv = 0;
+}
+
+
 console.log(codearray);
 console.log(reversedCode);
 console.log(encrypted);
 console.log(decrypted);
-console.log(parseInt(decrypted, 16));
+console.log(intCode);
+console.log(finalcode);
+console.log(total);
+console.log(mod);
+console.log(result);
+console.log(dv);
 
 function parseHexString(str) {
   var result = [];
@@ -57,4 +85,11 @@ function createHexString(arr) {
   }
 
   return result;
+}
+
+function padding (code) {
+  while (code.length < 17) {
+    code = 0 + code;
+  }
+  return code;
 }
